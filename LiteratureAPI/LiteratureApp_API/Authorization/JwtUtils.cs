@@ -1,12 +1,12 @@
-﻿namespace WebApi.Authorization;
+﻿namespace LiteratureApp_API.Authorization;
 
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebApi.Entities;
-using WebApi.Helpers;
+using LiteratureApp_API.Entities;
+using LiteratureApp_API.Helpers;
 
 public interface IJwtUtils
 {
@@ -29,7 +29,11 @@ public class JwtUtils : IJwtUtils
         var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+            Subject = new ClaimsIdentity(new[] 
+            { 
+                new Claim("id", user.Id.ToString()),
+                //new Claim(ClaimTypes.Role, user.role)
+            }),
             Expires = DateTime.UtcNow.AddDays(7),  // token is valid for 7 days
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };

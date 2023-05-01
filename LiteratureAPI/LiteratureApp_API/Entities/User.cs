@@ -1,4 +1,4 @@
-namespace WebApi.Entities;
+namespace LiteratureApp_API.Entities;
 
 using System.Text.Json.Serialization;
 

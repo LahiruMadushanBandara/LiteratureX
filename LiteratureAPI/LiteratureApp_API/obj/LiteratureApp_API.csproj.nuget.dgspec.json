@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyProjs\\MyLiteratureApp\\LiteratureApp_API\\LiteratureApp_API.csproj": {}
+    "D:\\MyProjs\\MyLiteratureAppAPI\\LiteratureAPI\\LiteratureApp_API\\LiteratureApp_API.csproj": {}
   },
   "projects": {
-    "D:\\MyProjs\\MyLiteratureApp\\LiteratureApp_API\\LiteratureApp_API.csproj": {
+    "D:\\MyProjs\\MyLiteratureAppAPI\\LiteratureAPI\\LiteratureApp_API\\LiteratureApp_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyProjs\\MyLiteratureApp\\LiteratureApp_API\\LiteratureApp_API.csproj",
+        "projectUniqueName": "D:\\MyProjs\\MyLiteratureAppAPI\\LiteratureAPI\\LiteratureApp_API\\LiteratureApp_API.csproj",
         "projectName": "LiteratureApp_API",
-        "projectPath": "D:\\MyProjs\\MyLiteratureApp\\LiteratureApp_API\\LiteratureApp_API.csproj",
+        "projectPath": "D:\\MyProjs\\MyLiteratureAppAPI\\LiteratureAPI\\LiteratureApp_API\\LiteratureApp_API.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\MyProjs\\MyLiteratureApp\\LiteratureApp_API\\obj\\",
+        "outputPath": "D:\\MyProjs\\MyLiteratureAppAPI\\LiteratureAPI\\LiteratureApp_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,6 +70,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.14, )"
+            },
+            "Microsoft.Extensions.ML": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[2.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

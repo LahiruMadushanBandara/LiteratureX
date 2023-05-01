@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApi.Helpers;
+using LiteratureApp_API.Helpers;
 
 #nullable disable
 
@@ -21,7 +21,34 @@ namespace LiteratureApp_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("WebApi.Entities.User", b =>
+            modelBuilder.Entity("LiteratureApp_API.Entities.ProfileLiteratureRating", b =>
+                {
+                    b.Property<int>("ProfileLiteratureRatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProfileLiteratureRatingId"), 1L, 1);
+
+                    b.Property<int>("LiteratureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProfileImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProfileLiteratureRatingId");
+
+                    b.ToTable("ProfileLiteratureRating", (string)null);
+                });
+
+            modelBuilder.Entity("LiteratureApp_API.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

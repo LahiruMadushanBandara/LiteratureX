@@ -1,4 +1,4 @@
-﻿namespace WebApi.Authorization;
+﻿namespace LiteratureApp_API.Authorization;
 
 using LiteratureApp_API.Services.UserService;
 

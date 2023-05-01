@@ -1,11 +1,11 @@
-﻿namespace WebApi.Controllers;
+﻿namespace LiteratureApp_API.Controllers;
 
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using WebApi.Helpers;
-using WebApi.Models.Users;
+using LiteratureApp_API.Helpers;
+using LiteratureApp_API.Models.Users;
 
 
 [ApiController]

@@ -1,5 +1,5 @@
-﻿using WebApi.Entities;
-using WebApi.Models.Users;
+﻿using LiteratureApp_API.Entities;
+using LiteratureApp_API.Models.Users;
 
 public interface IUserService
 {
@@ -9,4 +9,5 @@ public interface IUserService
     void Register(RegisterRequest model);
     void Update(int id, UpdateRequest model);
     void Delete(int id);
+    List<(int literatureId, int literatureRating)> GetProfileViewedLiteratures(int id);
 }

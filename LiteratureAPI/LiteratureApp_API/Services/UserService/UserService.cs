@@ -2,10 +2,12 @@
 
 using AutoMapper;
 using BCrypt.Net;
-using WebApi.Authorization;
-using WebApi.Entities;
-using WebApi.Helpers;
-using WebApi.Models.Users;
+using LiteratureApp_API.Models.Users;
+using Microsoft.EntityFrameworkCore;
+using LiteratureApp_API.Authorization;
+using LiteratureApp_API.Entities;
+using LiteratureApp_API.Helpers;
+using LiteratureApp_API.Models.Users;
 
 public class UserService : IUserService
 {
@@ -22,6 +24,13 @@ public class UserService : IUserService
         _jwtUtils = jwtUtils;
         _mapper = mapper;
     }
+
+    private List<UserProfile> _profile = new List<UserProfile>(LoadProfileData());
+
+    public List<UserProfile> GetProfiles => _profile;
+
+
+    public int _activeprofileid = -1;
 
     public AuthenticateResponse Authenticate(AuthenticateRequest model)
     {
@@ -96,5 +105,96 @@ public class UserService : IUserService
         var user = _context.Users.Find(id);
         if (user == null) throw new KeyNotFoundException("User not found");
         return user;
+    }
+
+    
+
+    public List<(int literatureId, int literatureRating)> GetProfileViewedLiteratures(int id)
+    {
+        foreach (UserProfile Profile in _profile)
+        {
+            if (id == Profile.ProfileID)
+            {
+                return Profile.ProfileLiteratureRatings;
+            }
+        }
+        return null;
+    }
+
+    public List<UserProfile> GetAllProfiles()
+    {
+        var userList = _context.Users.ToListAsync().Result;
+        var profileList = new List<UserProfile>();
+        List<(int literatureId, int literatureRating)> ratings = new List<(int literatureId, int literatureRating)>();
+
+
+
+        foreach (var user in userList)
+        {
+            profileList.Add(new UserProfile()
+            {
+                ProfileID = user.Id,
+                ProfileName = user.Username,
+                ProfileImageName = "",
+                ProfileLiteratureRatings = ratings
+            });
+        }
+        return _profile;
+    }
+
+
+    private static List<UserProfile> LoadProfileData()
+    {
+        List<UserProfile> result = new List<UserProfile>();
+
+        FileStream fileReader = File.OpenRead("Data/Profiles.csv");
+        StreamReader reader = new StreamReader(fileReader);
+
+        try
+        {
+            bool header = true;
+            int index = 0;
+            string line = "";
+
+
+            while (!reader.EndOfStream)
+            {
+                if (header)
+                {
+                    line = reader.ReadLine();
+                    header = false;
+                }
+                line = reader.ReadLine();
+
+                string[] fields = line.Split(',');
+                int ProfileID = int.Parse(fields[0].TrimStart(new char[] { '0' }));
+                string ProfileImageName = fields[1];
+                string ProfileName = fields[2];
+
+                List<(int literatureId, int literatureRating)> ratings = new List<(int literatureId, int literatureRating)>();
+
+                for (int i = 3; i < fields.Length; i += 2)
+                {
+                    ratings.Add((int.Parse(fields[i]), int.Parse(fields[i + 1])));
+                }
+
+                result.Add(new UserProfile()
+                {
+                    ProfileID = ProfileID,
+                    ProfileImageName = ProfileImageName,
+                    ProfileName = ProfileName,
+                    ProfileLiteratureRatings = ratings
+                });
+                index++;
+            }
+        }
+        finally
+        {
+            if (reader != null)
+            {
+                reader.Dispose();
+            }
+        }
+        return result;
     }
 }

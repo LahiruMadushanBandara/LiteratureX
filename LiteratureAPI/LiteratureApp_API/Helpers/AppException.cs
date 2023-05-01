@@ -1,4 +1,4 @@
-namespace WebApi.Helpers;
+namespace LiteratureApp_API.Helpers;
 
 using System.Globalization;
 

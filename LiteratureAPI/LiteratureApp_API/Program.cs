@@ -1,9 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using WebApi.Authorization;
-using WebApi.Helpers;
+using LiteratureApp_API.Authorization;
+using LiteratureApp_API.Helpers;
 using LiteratureApp_API.Services.UserService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.ML.Data;
+using Microsoft.Extensions.ML;
+using LiteratureApp_API.Services.LiteratureService;
+using LiteratureApp_API.Data_Structures;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +27,12 @@ var builder = WebApplication.CreateBuilder(args);
     // configure strongly typed settings object
     services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
+    var appSetting = builder.Configuration.GetSection("AppSettings").Get<AppSettings>();
+
     // configure DI for application services
     services.AddScoped<IJwtUtils, JwtUtils>();
     services.AddScoped<IUserService, UserService>();
+    services.AddScoped<ILiteratureService, LiteratureService>();
 
     services.AddAuthentication(x =>
     {
@@ -42,6 +49,9 @@ var builder = WebApplication.CreateBuilder(args);
         };
     });
     services.AddSwaggerGen();
+
+    services.AddPredictionEnginePool<LiteratureRating, LiteratureRatingPrediction>()
+        .FromFile(modelName: "LiteratureRecommenderModel", filePath: "Model/model.zip", watchForChanges: true);
 }
 var app = builder.Build();
 

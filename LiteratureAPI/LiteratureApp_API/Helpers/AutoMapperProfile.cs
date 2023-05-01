@@ -1,8 +1,8 @@
-namespace WebApi.Helpers;
+namespace LiteratureApp_API.Helpers;
 
 using AutoMapper;
-using WebApi.Entities;
-using WebApi.Models.Users;
+using LiteratureApp_API.Entities;
+using LiteratureApp_API.Models.Users;
 
 public class AutoMapperProfile : Profile
 {

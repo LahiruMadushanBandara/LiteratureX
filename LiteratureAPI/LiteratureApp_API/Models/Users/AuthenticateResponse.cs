@@ -1,4 +1,4 @@
-namespace WebApi.Models.Users;
+namespace LiteratureApp_API.Models.Users;
 
 public class AuthenticateResponse
 {

@@ -1,7 +1,6 @@
-namespace WebApi.Helpers;
-
+namespace LiteratureApp_API.Helpers;
+using LiteratureApp_API.Entities;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Entities;
 
 public class DataContext : DbContext
 {
@@ -20,4 +19,12 @@ public class DataContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<ProfileLiteratureRating> ProfileLiteratureRating { get; set; }
+    public DbSet<Literature> Literature { get; set; }
+    
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<ProfileLiteratureRating>().ToTable("ProfileLiteratureRating");
+    }
 }
