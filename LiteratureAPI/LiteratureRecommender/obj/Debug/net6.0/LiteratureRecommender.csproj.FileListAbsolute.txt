@@ -1,4 +1,3 @@
-D:\MyProjs\MyLiteratureAppAPI\LiteratureAPI\LiteratureRecommender\bin\Debug\net6.0\Data\recommendation-ratings-test.csv
 D:\MyProjs\MyLiteratureAppAPI\LiteratureAPI\LiteratureRecommender\bin\Debug\net6.0\LiteratureRecommender.exe
 D:\MyProjs\MyLiteratureAppAPI\LiteratureAPI\LiteratureRecommender\bin\Debug\net6.0\LiteratureRecommender.deps.json
 D:\MyProjs\MyLiteratureAppAPI\LiteratureAPI\LiteratureRecommender\bin\Debug\net6.0\LiteratureRecommender.runtimeconfig.json

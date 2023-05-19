@@ -32,7 +32,7 @@ public class JwtUtils : IJwtUtils
             Subject = new ClaimsIdentity(new[] 
             { 
                 new Claim("id", user.Id.ToString()),
-                //new Claim(ClaimTypes.Role, user.role)
+                new Claim("username", user.Username)
             }),
             Expires = DateTime.UtcNow.AddDays(7),  // token is valid for 7 days
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

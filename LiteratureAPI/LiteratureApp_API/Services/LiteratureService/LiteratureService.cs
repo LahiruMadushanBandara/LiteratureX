@@ -25,12 +25,12 @@ namespace LiteratureApp_API.Services.LiteratureService
         {
             List<Literature> result = new List<Literature>();
 
-            result.Add(new Literature { LiteratureID = 1573, LiteratureName = "Face/Off (1997)" });
-            result.Add(new Literature { LiteratureID = 1721, LiteratureName = "Titanic (1997)" });
-            result.Add(new Literature { LiteratureID = 1703, LiteratureName = "Home Alone 3 (1997)" });
-            result.Add(new Literature { LiteratureID = 49272, LiteratureName = "Casino Royale (2006)" });
-            result.Add(new Literature { LiteratureID = 5816, LiteratureName = "Harry Potter and the Chamber of Secrets (2002)" });
-            result.Add(new Literature { LiteratureID = 3578, LiteratureName = "Gladiator (2000)" });
+            result.Add(new Literature { LiteratureID = 1573, LiteratureName = "The Sea(poetry) - J.Reeves", Description = "The sea is a hungry dog, Giant and grey. He rolls on the beach all day. With his clashing teeth and shaggy jaws Hour upon hour he gnaws The rumbling, tumbling stones, And 'Bones, bones, bones, bones! ' The giant sea-dog moans, Licking his greasy paws.", ImageUrl= "/assets/images/TheSea.jpg" });
+            result.Add(new Literature { LiteratureID = 1721, LiteratureName = "A Minor Bird(poetry) - Robert Frost", Description = "The poem is about intolerance of nature, disrespect for others and suppression of the weak by the powerful. The speaker shows a total disregard for the bird which he sees to be 'minor' (insignificant or unimportant)", ImageUrl = "/assets/images/minor-bird.jpg" });
+            result.Add(new Literature { LiteratureID = 1703, LiteratureName = "Paying Calls(poetry) - Thomas Hardy", Description = "“Paying Calls”, written by a mature Hardy, is one of his shorter poems. There is a meditative quality throughout the composition.", ImageUrl = "/assets/images/paying-calls.jpg" });
+            result.Add(new Literature { LiteratureID = 49272, LiteratureName = "Mother(Novel) - Maxim Gorky", Description = "Mother is a novel written by Maxim Gorky in 1906 about revolutionary factory workers. It was first published, in English, in Appleton's Magazine in 1906, then in Russian in 1907. Although Gorky was highly critical of the novel, the work was translated into many languages", ImageUrl = "/assets/images/Mother.jpg" });
+            result.Add(new Literature { LiteratureID = 5816, LiteratureName = "The Village by the Sea(Novel) - Anita Desai", Description = "The Village by the Sea: an Indian family story is a novel for young people by the Indian writer Anita Desai, published in London by Heinemann in 1982. It is based on the poverty, hardships and sorrow faced by a small rural, community in India", ImageUrl = "assets/images/village-by-the-sea.jpg" });
+            result.Add(new Literature { LiteratureID = 3578, LiteratureName = "Anne Frank Huis(poetry) - Andrew Motion", Description = "Anne Frank Huis. By Andrew Motion. Even now, after twice her lifetime of grief. and anger in the very place, whoever comes. to climb these narrow stairs", ImageUrl = "/assets/images/frank-huis.jfif" });
             return result;
         }
 

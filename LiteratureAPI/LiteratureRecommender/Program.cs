@@ -67,7 +67,7 @@ Console.WriteLine("Evaluation Metrics: acc:" + Math.Round(metrics.Accuracy, 2) +
 Console.WriteLine("=============== Test a single prediction ===============", color);
 Console.WriteLine();
 var predictionEngine = mlContext.Model.CreatePredictionEngine<LiteratureRating, LiteratureRatingPrediction>(model);
-LiteratureRating testData = new LiteratureRating() { userId = "6", literatureId = "10" };
+LiteratureRating testData = new LiteratureRating() { userId = "5", literatureId = "15" };
 
 var literatureRatingPrediction = predictionEngine.Predict(testData);
 Console.WriteLine($"UserId:{testData.userId} with literatureId: {testData.literatureId} Score:{Sigmoid(literatureRatingPrediction.Score)} and Label {literatureRatingPrediction.PredictedLabel}", Color.YellowGreen);

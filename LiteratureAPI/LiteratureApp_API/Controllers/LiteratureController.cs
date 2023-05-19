@@ -41,7 +41,7 @@ namespace LiteratureApp_API.Controllers
             //1.Create the ML.NET environment and load the already trained model
             MLContext mlContext = new MLContext();
 
-            List<(int literatureId, float normalizedScore)> ratings = new List<(int literatureId, float normalizedScore)>();
+            List<Literature> ratings = new List<Literature>();
             var LiteratureRatings = _profileService.GetProfileViewedLiteratures(id);
             List<Literature> viewedLiteratures = new List<Literature>();
 
@@ -64,10 +64,17 @@ namespace LiteratureApp_API.Controllers
                 var predictionHandler = _predictionEnginePool.Predict(modelName: "LiteratureRecommenderModel", input);
 
                 //Normalize the prediction scores for the "ratings" b / w 0 - 100
-                float normalizedscore = _literatureService.Sigmoid(prediction.Score);
+                float normalizedscore = _literatureService.Sigmoid(predictionHandler.Score);
 
                 //Add the score for recommendation of each literature in the trending literature list
-                ratings.Add((literature.LiteratureID, normalizedscore));
+                ratings.Add(new Literature
+                  {
+                    LiteratureID = literature.LiteratureID,
+                    RatingScore = normalizedscore,
+                    LiteratureName = literature.LiteratureName,
+                    ImageUrl = literature.ImageUrl,
+                    Description = literature.Description,
+                });
             }
 
             //3.Provide rating predictions to the view to be displayed
@@ -90,5 +97,11 @@ namespace LiteratureApp_API.Controllers
             var user = _profileService.GetById(id);
             return Ok(user);
         }
+    }
+
+    class Rating
+    {
+        public int LiteratureID { get; set; }
+        public float normalizedScore { get; set; }
     }
 }
